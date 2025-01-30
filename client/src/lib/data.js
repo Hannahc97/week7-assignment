@@ -1,0 +1,1 @@
+// You could have some data here as an array of objects to use in client until the database is ready 
