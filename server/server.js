@@ -10,9 +10,12 @@ app.use(express.json());
 // set up your configs 
 app.use(cors())
 
-
-
 // set up a port to host our server
+
+const PORT = 8080;
+app.listen(PORT, () => {
+    console.log(`The server is running on port: ${PORT}`)
+})
 
 // write your route 
 
