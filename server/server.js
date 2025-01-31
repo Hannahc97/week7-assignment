@@ -18,6 +18,9 @@ app.listen(PORT, () => {
 })
 
 // write your route 
+app.get("/", (req, res) => {
+    res.json({message: "This is the root route"})
+})
 
 // ===============================================================
 
