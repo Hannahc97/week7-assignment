@@ -37,8 +37,17 @@ JOIN categories ON recipes.category_id = categories.id`)
 
 app.post("/add-recipe", (req, res) => {
     const newData = req.body;
-    const query = db.query(``)
-    
+    const query = db.query(
+        `INSERT INTO users (username, email)
+        VALUES ($1, $2)`, 
+        [newData.username, newData.email], 
+        `INSERT INTO categories (category_name)
+        VALUES ($1)`, 
+        [newData,catergory_name], 
+        `INSERT INTO recipes (recipe_name, minutes, ingredients, instructions, user_id, category_id)
+        VALUES ($1, $2, $3, $4, $5, $6 )`, 
+        [newData.recipe_name, newData.minutes, newData.ingredients, newData.instructions, newData.user_id, newData.category_id])
+    res.json({message: "Data sent to the database!"})
 })
 
 // ===============================================================
