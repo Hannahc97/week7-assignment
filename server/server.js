@@ -27,13 +27,19 @@ app.get("/", (req, res) => {
 
 // I need a route to READ data from the database
 app.get("/recipes", async(req, res) => {
-    const data = await db.query(`SELECT * FROM recipes`)
+    const data = await db.query(`SELECT users.username, categories.category_name, recipes.recipe_name, recipes.minutes, recipes.ingredients, recipes.instructions  FROM users
+JOIN recipes ON recipes.user_id = users.id
+JOIN categories ON recipes.category_id = categories.id`)
     res.json(data.rows)
 })
 
 // I need a route to CREATE new data in the database --> the new data here is stored in the body object 
 
-
+app.post("/add-recipe", (req, res) => {
+    const newData = req.body;
+    const query = db.query(``)
+    
+})
 
 // ===============================================================
 
