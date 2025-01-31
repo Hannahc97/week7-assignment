@@ -1,6 +1,7 @@
 // import packages
 import express from "express";
 import cors from "cors";
+import { db } from "./dbConnection.js";
 
 // set up your packages 
 const app = express();
@@ -25,8 +26,14 @@ app.get("/", (req, res) => {
 // ===============================================================
 
 // I need a route to READ data from the database
+app.get("/recipes", async(req, res) => {
+    const data = await db.query(`SELECT * FROM recipes`)
+    res.json(data.rows)
+})
 
 // I need a route to CREATE new data in the database --> the new data here is stored in the body object 
+
+
 
 // ===============================================================
 
