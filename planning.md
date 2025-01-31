@@ -8,7 +8,7 @@
 ## Plan your database schema
 
 - Tools: drawsql
-- Purpose: to organise our data and to have a clearer idea of the data you need to mnaipulate.
+- Purpose: to organise our data and to have a clearer idea of the data you need to manipulate.
 - Questions: how many tables do I need? what is the relationship between the tables 
 
 ## Set up your database tables using the schema 
