@@ -1,10 +1,16 @@
 // import packages
+import express from "express";
+import cors from "cors";
 
 // set up your packages 
+const app = express();
+
+app.use(express.json());
 
 // set up your configs 
+app.use(cors())
 
-// set up your database pool
+
 
 // set up a port to host our server
 
