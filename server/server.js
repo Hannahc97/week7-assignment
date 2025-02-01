@@ -37,16 +37,16 @@ JOIN categories ON recipes.category_id = categories.id`)
 
 app.post("/add-recipe", async (req, res) => {
     const newData = req.body;
+    // querying db by inserting user data then returning id in sql
     const userQuery = await db.query(
-        // querying db by inserting user data then returning id in sql
         `INSERT INTO users (username) VALUES ($1) RETURNING id;`,[newData.username]) 
-        // from the new inserted data it's getting rows of data and then the id 
+    // from the new inserted data it's getting rows of data and then the id 
     const getUserId = userQuery.rows[0].id; 
     console.log("User ID:", getUserId); 
 
     // const categoryQuery = db.query(
     //     `INSERT INTO categories (category_name) VALUES ($1)`, [newData.category_name])
-        
+    
     // querying db to find the id of a category based on its name
     // Need await as it's retrieving data from db to server. 
     const categoryNameQuery = await db.query(
@@ -59,7 +59,7 @@ app.post("/add-recipe", async (req, res) => {
         VALUES ($1, $2, $3, $4, $5, $6)`, [newData.recipe_name, newData.minutes, newData.ingredients, newData.instructions, getUserId, categoryID])
 
     console.log(`category id is: ${categoryID}`)
-    
+
     res.json({message: "Data sent to the database!"})
 })
 
