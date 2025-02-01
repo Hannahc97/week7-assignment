@@ -12,6 +12,7 @@ Optional
 Requesting feedback about a specific part of your submission.
 
 What useful external sources helped you complete the assignment (e.g Youtube tutorials)?
+https://dev.to/darkmavis1980/the-returning-clause-in-sql-11k2 - how to use return statement in sql
 
 What errors or bugs did you encounter while completing your assignment? How did you solve them?
 
