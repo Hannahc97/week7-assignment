@@ -39,7 +39,7 @@ app.post("/add-recipe", async (req, res) => {
     const newData = req.body;
     const userQuery = await db.query(
         // querying db by inserting user data then returning id in sql
-        `INSERT INTO users (username, email) VALUES ($1, $2) RETURNING id;`,[newData.username, newData.email]) 
+        `INSERT INTO users (username) VALUES ($1) RETURNING id;`,[newData.username]) 
         // from the new inserted data it's getting rows of data and then the id 
     const getUserId = userQuery.rows[0].id; 
     console.log("User ID:", getUserId); 
@@ -59,13 +59,13 @@ app.post("/add-recipe", async (req, res) => {
         VALUES ($1, $2, $3, $4, $5, $6)`, [newData.recipe_name, newData.minutes, newData.ingredients, newData.instructions, getUserId, categoryID])
 
     console.log(`category id is: ${categoryID}`)
+    
     res.json({message: "Data sent to the database!"})
 })
 
 // Object
 // {
 //     "username": "test",
-//     "email": "test",
 //     "recipe_name": "test",
 //     "minutes": 0,
 //     "ingredients": "test",
