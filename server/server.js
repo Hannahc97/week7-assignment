@@ -35,18 +35,19 @@ JOIN categories ON recipes.category_id = categories.id`)
 
 // I need a route to CREATE new data in the database --> the new data here is stored in the body object 
 
-app.post("/add-recipe", (req, res) => {
+app.post("/add-recipe", async (req, res) => {
     const newData = req.body;
-    const query = db.query(
-        `INSERT INTO users (username, email)
-        VALUES ($1, $2)`, 
-        [newData.username, newData.email], 
-        `INSERT INTO categories (category_name)
-        VALUES ($1)`, 
-        [newData,catergory_name], 
-        `INSERT INTO recipes (recipe_name, minutes, ingredients, instructions, user_id, category_id)
-        VALUES ($1, $2, $3, $4, $5, $6 )`, 
-        [newData.recipe_name, newData.minutes, newData.ingredients, newData.instructions, newData.user_id, newData.category_id])
+    const userQuery = await db.query(
+        `INSERT INTO users (username, email) VALUES ($1, $2);`,[newData.username, newData.email])
+        // const userId = userQuery.rows;
+        // console.log("User ID:", userId); 
+    const categoryQuery = db.query(
+        `INSERT INTO categories (category_name) VALUES ($1)`, [newData.category_name])
+        // console.log(`category data: ${userQuery[0].res.json.rows}`)
+    // const categoryID = categoryQuery.rows.id
+    const recipeQuery = db.query(
+        `INSERT INTO recipes (recipe_name, minutes, ingredients, instructions)
+        VALUES ($1, $2, $3, $4)`, [newData.recipe_name, newData.minutes, newData.ingredients, newData.instructions])
     res.json({message: "Data sent to the database!"})
 })
 
