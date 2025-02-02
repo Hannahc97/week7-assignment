@@ -77,6 +77,15 @@ app.post("/add-recipe", async (req, res) => {
 
 //? STRETCH GOAL: I want to delete data from the database --> use params 
 
+// I want to DELETE one biscuit entry from the biscuits table
+// app.delete("/delete-recipe/:id", (req, res)=> {
+//     // const deletData = req.body() - don't need this as we just need to know which specific row or entry I am deleting 
+//     const deleteDataParams = req.params;
+//     // I need to query my database
+//     // const query = db.query(`DELETE FROM recipes WHERE id = 3`)
+//     const query = db.query(`DELETE FROM recipes WHERE id = $1`, [deleteDataParams.id])
+//     res.json({message: "You have performed a destructive operation"})
+// })
 
 
 

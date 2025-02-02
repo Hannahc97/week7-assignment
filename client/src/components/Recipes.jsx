@@ -41,12 +41,14 @@ export default function Recipes () {
                 {data.map((item) => (
                     <RecipeComments 
                     key={item.id}
+                    // id={item.id}
                     username={item.username}
                     food_category={item.food_category}
                     recipe_name={item.recipe_name}
                     minutes={item.minutes}
                     ingredients={item.ingredients}
                     instructions={item.instructions}
+                    // setRefreshCount={setRefreshCount}
                     />
                 ))}
             </div>
