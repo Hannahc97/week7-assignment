@@ -1,7 +1,9 @@
+import "../App.css"
+
 export default function Footer () {
     return (
         <>
-            <h5>Created by Hannah </h5>
+            <h5 className="footer">Created by Hannah </h5>
         </>
     )
 }

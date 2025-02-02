@@ -1,7 +1,10 @@
 import { useState } from "react"
+import "./Form.css"
+import { useNavigate } from "react-router-dom"
 
 export default function Form () {
     // We will store the form values in state 
+    const navigate = useNavigate()
     const [formValues, setFormValues] = useState(
         {
             username: "",
@@ -35,14 +38,17 @@ export default function Form () {
             headers: {"Content-type": "application/json",},
             body: JSON.stringify({formValues})
         });
-        alert("Form Submitted!")
+        alert("Your recipe has been submitted!")
+        navigate("/recipes")
+        
     }
 
     return (
         <>
+        <div className="form-container">
             <h2>Recipe Form</h2>
             {/* Write your form tags and all its elements in here, including the event listener (and the value attribute...) */}
-            <form onSubmit={handleSubmit}>
+            <form id="form-container2" onSubmit={handleSubmit}>
                 <label htmlFor="">Username: </label> <br/>
                 <input 
                     type="text" 
@@ -114,6 +120,7 @@ export default function Form () {
                 <button type="submit">Submit Recipe!</button>
             </form>
             {/* Remember to track the input changes */}
+        </div>
         </>
     )
 }

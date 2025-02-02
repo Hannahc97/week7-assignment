@@ -4,10 +4,10 @@ export default function RecipeComments (props) {
     return (
         <>
         <div className="recipe-container"> 
-                    <h4>By: {username}</h4>
-                    <h4>{food_category}</h4>
+                    <h4>Recipe shared by: {username}</h4>
+                    <h4>Category: {food_category}</h4>
                     <h3>{recipe_name}</h3>
-                    <p>{minutes} min/s</p>
+                    <p>{minutes} min(s)</p>
                     <p>Ingredients: {ingredients}</p>
                     <p>Instructions: {instructions}</p>
                     </div>

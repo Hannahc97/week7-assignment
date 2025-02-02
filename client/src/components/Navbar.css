@@ -1,0 +1,9 @@
+
+a{
+    font-size: 2rem;
+    color: black;
+}
+
+a:hover{
+    color: #7BC9FF;
+}
