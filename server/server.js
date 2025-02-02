@@ -27,9 +27,8 @@ app.get("/", (req, res) => {
 
 // I need a route to READ data from the database
 app.get("/recipes", async(req, res) => {
-    const data = await db.query(`SELECT users.username, categories.category_name, recipes.recipe_name, recipes.minutes, recipes.ingredients, recipes.instructions  FROM users
-JOIN recipes ON recipes.user_id = users.id
-JOIN categories ON recipes.category_id = categories.id`)
+    const data = await db.query(`SELECT users.username, recipes.food_category, recipes.recipe_name, recipes.minutes, recipes.ingredients, recipes.instructions  FROM users
+JOIN recipes ON recipes.user_id = users.id`)
     res.json(data.rows)
 })
 
@@ -40,7 +39,7 @@ app.post("/add-recipe", async (req, res) => {
     // querying db by inserting user data then returning id in sql
     // Need await as it's retrieving data from db to server. 
     const userQuery = await db.query(
-        `INSERT INTO users (username) VALUES ($1) RETURNING id;`,[newData.username]) 
+        `INSERT INTO users (username) VALUES ($1) RETURNING id;`,[newData.formValues.username]) 
     // from the new inserted data it's getting rows of data and then the id 
     const getUserId = userQuery.rows[0].id; 
     console.log("User ID:", getUserId); 
@@ -57,7 +56,7 @@ app.post("/add-recipe", async (req, res) => {
     
     const recipeQuery = db.query(
         `INSERT INTO recipes (food_category, recipe_name, minutes, ingredients, instructions, user_id)
-        VALUES ($1, $2, $3, $4, $5, $6)`, [newData.food_category, newData.recipe_name, newData.minutes, newData.ingredients, newData.instructions, getUserId])
+        VALUES ($1, $2, $3, $4, $5, $6)`, [newData.formValues.food_category, newData.formValues.recipe_name, newData.formValues.minutes, newData.formValues.ingredients, newData.formValues.instructions, getUserId])
 
     // console.log(`category id is: ${categoryID}`)
 

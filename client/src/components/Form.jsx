@@ -6,12 +6,22 @@ export default function Form () {
         {
             username: "",
             food_category: "",
-            recipeName: "",
-            time: "",
+            recipe_name: "",
+            minutes: "",
             ingredients: "",
             instructions: ""
         }
     )
+    
+    // We need change handler 
+    function handleChangeFormValues (event) {
+        setFormValues({
+            ...
+            formValues,
+            [event.target.name] : event.target.value
+        })
+        console.log(event.target.value)
+    }
 
     // We need submit handler 
     // In the submit handler, we have different tasks:
@@ -27,23 +37,13 @@ export default function Form () {
         });
         // alert("Form Submitted!")
     }
-    
-    // We need change handler 
-    function handleChangeFormValues (event) {
-        setFormValues({
-            ...
-            formValues,
-            [event.target.name] : event.target.value
-        })
-        console.log(event.target.value)
-    }
 
     return (
         <>
-            <h2>Form</h2>
+            <h2>Recipe Form</h2>
             {/* Write your form tags and all its elements in here, including the event listener (and the value attribute...) */}
-            <form onClick={handleSubmit}>
-                <label htmlFor="">Username:</label> <br/>
+            <form onSubmit={handleSubmit}>
+                <label htmlFor="">Username: </label> <br/>
                 <input 
                     type="text" 
                     name="username" 
@@ -65,29 +65,29 @@ export default function Form () {
                     onChange={handleChangeFormValues}
                 />
                 <br/>
-                <label htmlFor="">Recipe Name:</label> <br/>
+                <label htmlFor="">Recipe Name: </label> <br/>
                 <input 
                     type="text" 
-                    name="recipeName" 
-                    id="recipeName"
+                    name="recipe_name" 
+                    id="recipe_name"
                     placeholder="Enter your recipe name"
                     required
-                    value={formValues.recipeName}
+                    value={formValues.recipe_name}
                     onChange={handleChangeFormValues}
                 />
                 <br/>
-                <label htmlFor="">Cooking Time (minutes):</label> <br/>
+                <label htmlFor="">Cooking Time (minutes): </label> <br/>
                 <input 
                     type="number" 
-                    name="time" 
-                    id="time"
+                    name="minutes" 
+                    id="minutes"
                     min={0}
                     required
-                    value={formValues.time}
+                    value={formValues.minutes}
                     onChange={handleChangeFormValues}
                 />
                 <br/>
-                <label htmlFor="">Ingredients:</label> <br/>
+                <label htmlFor="">Ingredients: </label> <br/>
                 <textarea 
                     name="ingredients" 
                     id="ingredients"
@@ -99,7 +99,7 @@ export default function Form () {
                     onChange={handleChangeFormValues}>
                 </textarea>
                 <br/>
-                <label htmlFor="">Instructions:</label> <br/>
+                <label htmlFor="">Instructions: </label> <br/>
                 <textarea 
                     name="instructions" 
                     id="instructions"
