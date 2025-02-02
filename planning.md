@@ -21,7 +21,7 @@
 
 ## Set up your client
 - Tools: React and other packages
-- Purpose: to have an interfacte to interact with the user.
+- Purpose: to have an interface to interact with the user.
 
 ## Upload the project to GitHub
 
