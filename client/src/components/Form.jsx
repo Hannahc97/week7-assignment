@@ -5,7 +5,7 @@ export default function Form () {
     const [formValues, setFormValues] = useState(
         {
             username: "",
-            category: "",
+            food_category: "",
             recipeName: "",
             time: "",
             ingredients: "",
@@ -54,29 +54,16 @@ export default function Form () {
                     onChange={handleChangeFormValues}
                 />
                 <br/>
-                <label htmlFor="">Choose a category: </label>
-                <select 
-                    name="category" 
-                    id="category"
+                <label htmlFor="">Food Category: </label> <br/>
+                <input 
+                    type="text" 
+                    name="food_category" 
+                    id="food_category"
+                    placeholder="Enter the food category"
                     required
-                    value={formValues.category}
+                    value={formValues.food_category}
                     onChange={handleChangeFormValues}
-                    >
-                    <option value="Starter">Starter</option>
-                    <option value="Mains">Mains</option>
-                    <option value="Dessert">Dessert</option>
-                </select>
-                <select 
-                    name="category" 
-                    id="category"
-                    required
-                    value={formValues.category}
-                    onChange={handleChangeFormValues}
-                >
-                    <option value="starters">Starters</option>
-                    <option value="main">Main</option>
-                    <option value="dessert">Dessert</option>
-                </select>
+                />
                 <br/>
                 <label htmlFor="">Recipe Name:</label> <br/>
                 <input 
