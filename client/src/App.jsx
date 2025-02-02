@@ -1,5 +1,5 @@
 // The app component is the parent of your other components 
-
+import "./App.css"
 import Navbar from "./components/Navbar";
 import { Route, Routes } from "react-router-dom";
 import Form from "./components/Form";
@@ -11,7 +11,7 @@ import Home from "./components/Home";
 export default function App () {
   return (
     <>
-      <h1>Week 7 Assignment</h1>
+      <h1>Culinary Adventures 🌍</h1>
       {/* Routes go here! */}
 
       <Navbar/>

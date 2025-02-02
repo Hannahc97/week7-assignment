@@ -33,9 +33,9 @@ export default function Form () {
         fetch("http://localhost:8080/add-recipe", { 
             method: "POST",
             headers: {"Content-type": "application/json",},
-            body: JSON.stringify(formValues)
+            body: JSON.stringify({formValues})
         });
-        // alert("Form Submitted!")
+        alert("Form Submitted!")
     }
 
     return (

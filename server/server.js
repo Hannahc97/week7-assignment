@@ -27,7 +27,7 @@ app.get("/", (req, res) => {
 
 // I need a route to READ data from the database
 app.get("/recipes", async(req, res) => {
-    const data = await db.query(`SELECT users.username, recipes.food_category, recipes.recipe_name, recipes.minutes, recipes.ingredients, recipes.instructions  FROM users
+    const data = await db.query(`SELECT users.id, users.username, recipes.food_category, recipes.recipe_name, recipes.minutes, recipes.ingredients, recipes.instructions  FROM users
 JOIN recipes ON recipes.user_id = users.id`)
     res.json(data.rows)
 })
