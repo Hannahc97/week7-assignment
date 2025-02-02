@@ -38,6 +38,7 @@ JOIN categories ON recipes.category_id = categories.id`)
 app.post("/add-recipe", async (req, res) => {
     const newData = req.body;
     // querying db by inserting user data then returning id in sql
+    // Need await as it's retrieving data from db to server. 
     const userQuery = await db.query(
         `INSERT INTO users (username) VALUES ($1) RETURNING id;`,[newData.username]) 
     // from the new inserted data it's getting rows of data and then the id 
@@ -49,16 +50,16 @@ app.post("/add-recipe", async (req, res) => {
     
     // querying db to find the id of a category based on its name
     // Need await as it's retrieving data from db to server. 
-    const categoryNameQuery = await db.query(
-        `SELECT id FROM categories WHERE category_name = $1`, [newData.category_name]) 
+    // const categoryNameQuery = await db.query(
+    //     `SELECT id FROM categories WHERE category_name = $1`, [newData.category_name]) 
     // accesses the first row from the data and extracts the id
-    const categoryID = categoryNameQuery.rows[0].id
+    // const categoryID = categoryNameQuery.rows[0].id
     
     const recipeQuery = db.query(
-        `INSERT INTO recipes (recipe_name, minutes, ingredients, instructions, user_id, category_id)
-        VALUES ($1, $2, $3, $4, $5, $6)`, [newData.recipe_name, newData.minutes, newData.ingredients, newData.instructions, getUserId, categoryID])
+        `INSERT INTO recipes (food_category, recipe_name, minutes, ingredients, instructions, user_id)
+        VALUES ($1, $2, $3, $4, $5, $6)`, [newData.food_category, newData.recipe_name, newData.minutes, newData.ingredients, newData.instructions, getUserId])
 
-    console.log(`category id is: ${categoryID}`)
+    // console.log(`category id is: ${categoryID}`)
 
     res.json({message: "Data sent to the database!"})
 })
@@ -66,11 +67,11 @@ app.post("/add-recipe", async (req, res) => {
 // Object
 // {
 //     "username": "test",
+//     "food_category": "test",
 //     "recipe_name": "test",
 //     "minutes": 0,
 //     "ingredients": "test",
-//     "instructions": "test",
-//     "category_name": "Mains"
+//     "instructions": "test"
 // }
 
 // ===============================================================
