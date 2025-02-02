@@ -33,7 +33,7 @@ export default function Form () {
     function handleSubmit (event){
         event.preventDefault();
         //the client is trying to send a POST request to the /new-data route on the backend server 
-        fetch("http://localhost:8080/add-recipe", { 
+        fetch("https://week7-assignment-nh1l.onrender.com/add-recipe", { 
             method: "POST",
             headers: {"Content-type": "application/json",},
             body: JSON.stringify({formValues})
