@@ -40,8 +40,9 @@ export default function Form () {
         });
         alert("Your recipe has been submitted!")
         navigate("/recipes")
-        
     }
+
+    
 
     return (
         <>
