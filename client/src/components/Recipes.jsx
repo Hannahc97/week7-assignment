@@ -15,7 +15,7 @@ export default function Recipes () {
     useEffect(()=> {
         async function fetchData () {
             try {
-                const response = await fetch("http://localhost:8080/recipes");
+                const response = await fetch("https://week7-assignment-nh1l.onrender.com/recipes");
                 const data = await response.json();
                 console.log("EFFECT!!! : Data fetched successfully!")
                 setData(data)
