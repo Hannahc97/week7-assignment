@@ -1,10 +1,21 @@
 :root {
-  background-color: #A3FFD6;
+  background-color: #1C1678;
   box-sizing: border-box;
   margin: 0px;
   padding: 0px;
 }
 
-h1{
-  font-family: Henny Penny;
+.welcome{
+  font-family: delius;
+  background-color: #7BC9FF;
+  border-radius: 10px;
+  font-size: 2rem;
+  padding: 10px;
+  margin: 20px;
+  text-align: center;
+}
+
+.footer{
+  text-align: center;
+  color: white;
 }

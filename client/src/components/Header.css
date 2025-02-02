@@ -1,0 +1,20 @@
+.header-container {
+    text-align: center;
+    font-family: Delius;
+    background-color: #8576FF;
+    border-radius: 10px;
+    padding: 1px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+h1{
+    font-family: Henny Penny;
+    font-size: 4rem;
+    margin: 5px;
+}
+
+

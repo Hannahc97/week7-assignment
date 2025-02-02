@@ -1,6 +1,7 @@
 // We need a component to render the data from the database
 import RecipeComments from "./RecipeComments";
 import { useEffect, useState  } from "react";
+import "./Recipes.css"
 
 export default function Recipes () {
     // We need to store the database values in state
@@ -33,10 +34,10 @@ export default function Recipes () {
     //! When you have finished your assignment remember to replace the local host urls with the Render server url 
     return (
             <>
-            <h2>Recipes!</h2>
+                <div className="recipe">
+                <h2>Recipes!</h2>
             {/* here I will render a list with all my content entries (remeber the key) */}
             {/* a suggestion for you, fancies: why not conditionally rendering some of your content data? */}
-            {message}
                 {data.map((item) => (
                     <RecipeComments 
                     key={item.id}
@@ -48,7 +49,7 @@ export default function Recipes () {
                     instructions={item.instructions}
                     />
                 ))}
-            
+            </div>
         </>
     )
 }
