@@ -19,17 +19,25 @@ export default function Form () {
     // - We need to fetch the POST route from the server (you don't need useEffect for this task)
     function handleSubmit (event){
         event.preventDefault();
-        alert("Form Submitted!")
         //the client is trying to send a POST request to the /new-data route on the backend server 
         fetch("http://localhost:8080/add-recipe", { 
             method: "POST",
             headers: {"Content-type": "application/json",},
-            body: JSON.stringify({formValues})
+            body: JSON.stringify(formValues)
         });
+        // alert("Form Submitted!")
     }
     
     // We need change handler 
-    
+    function handleChangeFormValues (event) {
+        setFormValues({
+            ...
+            formValues,
+            [event.target.name] : event.target.value
+        })
+        console.log(event.target.value)
+    }
+
     return (
         <>
             <h2>Form</h2>
@@ -41,17 +49,33 @@ export default function Form () {
                     name="username" 
                     id="username"
                     placeholder="Enter your username"
-                    required 
+                    required
+                    value={formValues.username}
+                    onChange={handleChangeFormValues}
                 />
                 <br/>
                 <label htmlFor="">Choose a category: </label>
                 <select 
                     name="category" 
                     id="category"
-                    required>
+                    required
+                    value={formValues.category}
+                    onChange={handleChangeFormValues}
+                    >
                     <option value="Starter">Starter</option>
                     <option value="Mains">Mains</option>
                     <option value="Dessert">Dessert</option>
+                </select>
+                <select 
+                    name="category" 
+                    id="category"
+                    required
+                    value={formValues.category}
+                    onChange={handleChangeFormValues}
+                >
+                    <option value="starters">Starters</option>
+                    <option value="main">Main</option>
+                    <option value="dessert">Dessert</option>
                 </select>
                 <br/>
                 <label htmlFor="">Recipe Name:</label> <br/>
@@ -60,7 +84,9 @@ export default function Form () {
                     name="recipeName" 
                     id="recipeName"
                     placeholder="Enter your recipe name"
-                    required 
+                    required
+                    value={formValues.recipeName}
+                    onChange={handleChangeFormValues}
                 />
                 <br/>
                 <label htmlFor="">Cooking Time (minutes):</label> <br/>
@@ -69,7 +95,9 @@ export default function Form () {
                     name="time" 
                     id="time"
                     min={0}
-                    required 
+                    required
+                    value={formValues.time}
+                    onChange={handleChangeFormValues}
                 />
                 <br/>
                 <label htmlFor="">Ingredients:</label> <br/>
@@ -79,7 +107,9 @@ export default function Form () {
                     placeholder="Enter the ingredients needed for this recipe"
                     required 
                     rows="10" 
-                    cols="30">
+                    cols="30"
+                    value={formValues.ingredients}
+                    onChange={handleChangeFormValues}>
                 </textarea>
                 <br/>
                 <label htmlFor="">Instructions:</label> <br/>
@@ -89,13 +119,14 @@ export default function Form () {
                     placeholder="Enter the instuctions for your recipe"
                     required 
                     rows="8" 
-                    cols="50">
+                    cols="50"
+                    value={formValues.instructions}
+                    onChange={handleChangeFormValues}>
                 </textarea>
                 <br/>
                 <button type="submit">Submit Recipe!</button>
             </form>
             {/* Remember to track the input changes */}
-
         </>
     )
 }
